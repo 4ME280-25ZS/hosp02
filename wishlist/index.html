@@ -1,32 +1,122 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wishlist — Petr Hosek</title>
-  <meta name="description" content="A small project site: Wishlist." />
-  <link rel="stylesheet" href="styles.css?v=1">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #e0f7ff 0%, #f0f4ff 100%);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    .back { display: inline-block; margin-bottom: 1.5rem; color: #667eea; text-decoration: none; font-weight: 500; }
+    .back:hover { text-decoration: underline; }
+    h1 { color: #667eea; margin-bottom: 0.5rem; }
+    .subtitle { color: #666; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid #eee; }
+    th { background: #667eea; color: #fff; }
+    .names { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .badge { background: #667eea; color: #fff; padding: 0.2rem 0.6rem; border-radius: 15px; font-size: 0.85rem; }
+    .claim-form { display: flex; gap: 0.4rem; }
+    .claim-form input { padding: 0.4rem 0.6rem; border: 1px solid #ddd; border-radius: 6px; width: 120px; }
+    .claim-form button { background: #667eea; color: #fff; border: none; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; }
+    .claim-form button:hover { background: #764ba2; }
+    .muted { color: #999; font-style: italic; }
+    footer { text-align: center; margin-top: 2rem; color: #666; font-size: 0.9rem; }
+  </style>
 </head>
 <body>
-  <main class="hero">
-    <div class="container">
-      <h1>Wishlist</h1>
-      <p class="lead">A simple project starter for ideas and small showcases.</p>
+  <div class="container">
+    <a href="../" class="back">← Zpět na rozcestník</a>
+    <h1>🎁 Wishlist</h1>
+    <p class="subtitle">Napiš své jméno vedle položky!</p>
+    
+    <div id="wishlist">Načítám...</div>
+  </div>
+  
+  <footer>&copy; 2026 Petr Hosek</footer>
 
-      <section id="wishlist" class="wishlist">
-        <div id="wishlist-container">Loading...</div>
-      </section>
-    </div>
-  </main>
+  <script>
+    const SUPABASE_URL = 'https://ryugpbxgznrrbomuluuv.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_pIs94dA8947A7xUqsmfrHA_GArj-8oO';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="../" style="color:#667eea;text-decoration:none;">← Zpět na rozcestník</a></p>
-      <p>&copy; <span id="year"></span> Petr Hosek</p>
-    </div>
-  </footer>
+    async function loadWishlist() {
+      const { data: items, error: itemsErr } = await supabase.from('items').select('*').order('id');
+      const { data: claims, error: claimsErr } = await supabase.from('claims').select('*');
 
-  <script src="script.js"></script>
+      if (itemsErr || claimsErr) {
+        document.getElementById('wishlist').innerHTML = '<p class="muted">Chyba při načítání dat.</p>';
+        console.error(itemsErr, claimsErr);
+        return;
+      }
+
+      const claimsMap = {};
+      claims.forEach(c => {
+        if (!claimsMap[c.item_id]) claimsMap[c.item_id] = [];
+        claimsMap[c.item_id].push(c.name);
+      });
+
+      let html = '<table><tr><th>Položka</th><th>Jména</th><th>Přidej se</th></tr>';
+      items.forEach(item => {
+        const names = claimsMap[item.id] || [];
+        const namesHtml = names.length > 0 
+          ? names.map(n => `<span class="badge">${escapeHtml(n)}</span>`).join(' ')
+          : '<span class="muted">Zatím nikdo</span>';
+        html += `<tr>
+          <td>${escapeHtml(item.name)}</td>
+          <td><div class="names">${namesHtml}</div></td>
+          <td>
+            <form class="claim-form" onsubmit="return addName(event, ${item.id})">
+              <input type="text" name="name" placeholder="Tvoje jméno" maxlength="30" required>
+              <button type="submit">Přidat</button>
+            </form>
+          </td>
+        </tr>`;
+      });
+      html += '</table>';
+      document.getElementById('wishlist').innerHTML = html;
+    }
+
+    async function addName(e, itemId) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value.trim();
+      if (!name) return false;
+
+      form.querySelector('button').disabled = true;
+      const { error } = await supabase.from('claims').insert({ item_id: itemId, name });
+      
+      if (error) {
+        alert('Nepodařilo se přidat jméno. Zkus to znovu.');
+        console.error(error);
+      } else {
+        form.name.value = '';
+        await loadWishlist();
+      }
+      form.querySelector('button').disabled = false;
+      return false;
+    }
+
+    function escapeHtml(str) {
+      return (str || '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[s]);
+    }
+
+    loadWishlist();
+    setInterval(loadWishlist, 10000);
+  </script>
 </body>
 </html>
