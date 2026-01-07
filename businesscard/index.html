@@ -1,27 +1,55 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Wishlist — Petr Hosek</title>
-  <meta name="description" content="A small project site: Wishlist." />
-  <link rel="stylesheet" href="styles.css?v=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Petr Hosek — Vizitka</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      text-align: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.3rem; color: #667eea; }
+    .role { color: #666; margin-bottom: 1.5rem; }
+    .email { margin-bottom: 1rem; }
+    .email a { color: #2196f3; text-decoration: none; font-weight: 600; }
+    .email a:hover { text-decoration: underline; }
+    .social {
+      display: inline-block;
+      background: #667eea;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+    .social:hover { background: #764ba2; transform: translateY(-2px); }
+    .back { color: #667eea; text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <main class="hero">
-    <div class="container">
-      <h1>Wishlist</h1>
-      <p class="lead">A simple project starter for ideas and small showcases.</p>
-      <p class="actions"><a class="btn" href="#">Get started</a></p>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Petr Hosek</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <div class="card">
+    <h1>Petr Hosek</h1>
+    <p class="role">Graphic Designer & Developer</p>
+    <p class="email"><a href="mailto:hosp02@vse.cz">hosp02@vse.cz</a></p>
+    <a href="https://www.linkedin.com/in/petr-hosek/" target="_blank" class="social">LinkedIn</a>
+    <p><a href="../" class="back">← Zpět na rozcestník</a></p>
+  </div>
 </body>
 </html>
