@@ -24,13 +24,26 @@
   </header>
 
   <main>
-    <section class="hero simple-card" role="main">
+    <section class="hero simple-card" role="main" aria-label="Intro">
       <div class="container">
-        <div class="business-card card-large">
-          <h1>Hi! I’m Petr Hosek</h1>
-          <p class="position">Graphic Designer</p>
-          <p class="contact-info">hosp02@vse.cz · <a href="https://www.linkedin.com/in/petr-hosek" target="_blank" rel="noopener">LinkedIn</a></p>
-          <p class="cta-row"><a class="cta" href="mailto:hosp02@vse.cz">Email</a> <a class="cta outline" href="https://www.linkedin.com/in/petr-hosek" target="_blank" rel="noopener">LinkedIn</a></p>
+        <div class="business-card card-large" role="region" aria-labelledby="hero-heading">
+          <div class="card-head">
+            <div class="avatar" aria-hidden="true"></div>
+            <div class="meta">
+              <h1 id="hero-heading">Hi — I’m Petr Hosek</h1>
+              <p class="position">Graphic Designer</p>
+              <p class="tagline">I craft bold visual identities and clean, usable websites.</p>
+            </div>
+          </div>
+
+          <p class="contact-info">Email: <a href="mailto:hosp02@vse.cz">hosp02@vse.cz</a> · <a href="https://www.linkedin.com/in/petr-hosek" target="_blank" rel="noopener">LinkedIn</a></p>
+
+          <div class="cta-row">
+            <a class="cta" href="mailto:hosp02@vse.cz">Email</a>
+            <a class="cta outline" href="https://www.linkedin.com/in/petr-hosek" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="cta outline" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+          </div>
+
           <p class="small">Based in Prague · Available for freelance & remote work</p>
         </div>
       </div>
@@ -40,6 +53,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>&copy; <span id="year"></span> Petr Hosek — Built with ❤️</p>
+      <p class="sr-only">This site is a single-page business-card layout showcasing contact information and links to portfolio assets.</p>
     </div>
   </footer>
 
