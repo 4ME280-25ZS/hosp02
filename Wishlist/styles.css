@@ -6,6 +6,16 @@
 .btn{display:inline-block;background:#0b66ff;color:#fff;padding:.6rem 1rem;border-radius:8px;text-decoration:none}
 .site-footer{padding:2rem 0;text-align:center;color:#6b7b8c;font-size:.9rem}
 
+/* Wishlist static table styles */
+.wishlist-table{width:100%;border-collapse:collapse;margin-top:2rem}
+.wishlist-table th,.wishlist-table td{padding:0.6em 0.4em;text-align:left}
+.wishlist-table th{color:#2563eb;font-weight:600;border-bottom:2px solid #dbeafe}
+.claim-badge{background:#3b82f6;color:#fff;border-radius:1em;padding:0.2em 0.9em;font-size:0.97em;margin-right:0.2em;margin-bottom:0.2em;display:inline-block}
+.claim-form{display:flex;gap:0.4em;margin-top:0.2em}
+.claim-form input[type="text"]{border:1px solid #93c5fd;border-radius:0.8em;padding:0.2em 0.8em;font-size:1em;min-width:120px}
+.claim-form button{background:#2563eb;color:#fff;border:none;border-radius:0.8em;padding:0.2em 1em;font-size:1em;cursor:pointer;transition:background 0.2s}
+.claim-form button:hover{background:#1d4ed8}
+
 /* Wishlist specific styles */
 .wishlist{margin-top:2rem}
 .wishlist .wish{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.75rem 1rem;border-radius:10px;background:rgba(11,102,255,0.04);margin-bottom:0.75rem;border:1px solid rgba(11,102,255,0.06)}
