@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Personal Brand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Your Name</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="site-nav">
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Hello, Petr Hosek</h1>
+        <p class="position">Multimedia student</p>
+        <p class="contact-info">Contact: <a href="mailto:hosp02@vse.cz">hosp02@vse.cz</a></p>
+        <p><a class="cta" href="#contact">Work with me</a></p>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>I craft elegant digital experiences — combining design and code to build meaningful products. Replace this text with your personal bio, experience highlights, and a short pitch.</p>
+      </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <h2>Portfolio</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="card-image" style="background:#eee;">Project Image</div>
+            <h3>Project One</h3>
+            <p>Short description of the project and your role.</p>
+            <p><a href="#">View</a></p>
+          </article>
+
+          <article class="card">
+            <div class="card-image" style="background:#eee;">Project Image</div>
+            <h3>Project Two</h3>
+            <p>Short description of the project and your role.</p>
+            <p><a href="#">View</a></p>
+          </article>
+
+          <article class="card">
+            <div class="card-image" style="background:#eee;">Project Image</div>
+            <h3>Project Three</h3>
+            <p>Short description of the project and your role.</p>
+            <p><a href="#">View</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <h2>Services</h2>
+        <ul class="services-list">
+          <li>Product design & UX</li>
+          <li>Web development (HTML/CSS/JS)</li>
+          <li>Branding & visual identity</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <form id="contactForm">
+          <label>Name<input type="text" name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Petr Hosek — Built with ❤️</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
