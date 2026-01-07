@@ -26,18 +26,24 @@
 .cta.outline{background:transparent;color:var(--accent);border:1px solid rgba(122,91,255,0.18)}
 @keyframes fadeUp{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
 
-.about,.portfolio,.services,.contact{padding:3rem 0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.card{background:#fff;border:1px solid #eee;padding:1rem;border-radius:8px}
-.card-image{height:140px;border-radius:6px;margin-bottom:.75rem;display:flex;align-items:center;justify-content:center;color:#888}
-.services-list{display:flex;gap:1rem;flex-wrap:wrap;list-style:none;padding:0;margin:0}
-.services-list li{background:#f2f6ff;padding:.5rem .75rem;border-radius:6px}
+/* Hide unused sections to keep a single-card page */
+.about,.portfolio,.services,.contact{display:none}
 
-.contact form{max-width:640px}
-.contact label{display:block;margin-bottom:.75rem}
-.contact input,.contact textarea{width:100%;padding:.5rem;border:1px solid #ddd;border-radius:6px}
-.contact button{background:#0b66ff;color:#fff;padding:.6rem .9rem;border:0;border-radius:6px}
+/* Center the single card in the viewport */
+.simple-card{min-height:80vh;display:flex;align-items:center;justify-content:center}
+.card-large{padding:3rem 2.25rem;max-width:520px}
+.small{color:#666;font-size:0.9rem;margin-top:0.6rem}
+.cta-row{display:flex;gap:0.6rem;justify-content:center;margin-top:0.75rem}
+.cta{padding:.6rem 1rem;border-radius:8px}
+.cta.outline{background:transparent;border:1px solid rgba(122,91,255,0.18)}
 
+/* Tweak header to be minimal */
+.site-header{background:transparent;border-bottom:0;position:fixed;top:18px;width:100%;}
+.header-inner{padding:0 1rem}
+.brand{color:#fff}
+
+/* Ensure footer is subtle and small */
+.site-footer{display:none}
 .site-footer{border-top:1px solid #eee;padding:1rem 0;text-align:center;color:#666}
 
 @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:1.8rem}}
