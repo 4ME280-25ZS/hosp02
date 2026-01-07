@@ -1,62 +1,105 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Petr Hosek — Graphic Designer</title>
-  <meta name="description" content="Petr Hosek — Graphic Designer. Based in Prague. Available for freelance & remote work. Contact: hosp02@vse.cz">
-  <!-- rebuild: 2026-01-07T15:00Z -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Petr Hosek — Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="animated-bg" aria-hidden="true"></div>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#">Petr Hosek</a>
-      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-      <nav class="site-nav">
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero simple-card" role="main" aria-label="Intro">
-      <div class="container">
-        <div class="business-card card-large" role="region" aria-labelledby="hero-heading">
-          <div class="card-head">
-            <div class="avatar" aria-hidden="true"></div>
-            <div class="meta">
-              <h1 id="hero-heading">Hi — I’m Petr Hosek</h1>
-              <p class="position">Professional websiter</p>
-              <p class="tagline">I craft bold visual identities and clean, usable websites.</p>
-            </div>
-          </div>
-
-          <p class="contact-info">Email: <a href="mailto:hosp02@vse.cz">hosp02@vse.cz</a> · <a href="https://www.linkedin.com/in/petr-hosek" target="_blank" rel="noopener">LinkedIn</a></p>
-
-          <div class="cta-row">
-            <a class="cta" href="mailto:hosp02@vse.cz">Email</a>
-            <a class="cta outline" href="https://www.linkedin.com/in/petr-hosek" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="cta outline" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-          </div>
-
-          <p class="small">Based in Prague · Available for freelance & remote work</p>
-        </div>
+  <!-- Rozcestník -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h2 class="nav-title">Petr Hosek</h2>
+      <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showSection('landing')">Domů</button>
+        <button class="nav-btn" onclick="showSection('businesscard')">Vizitka</button>
+        <button class="nav-btn" onclick="showSection('wishlist')">Wishlist</button>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Petr Hosek — Built with ❤️</p>
-      <p class="sr-only">This site is a single-page business-card layout showcasing contact information and links to portfolio assets.</p>
     </div>
-  </footer>
+  </nav>
+
+  <!-- Landing Page -->
+  <section id="landing" class="section active">
+    <div class="hero-container">
+      <h1>Petr Hosek</h1>
+      <p class="subtitle">Vyberi si projekt</p>
+      <div class="buttons">
+        <button class="btn btn-primary" onclick="showSection('businesscard')">
+          <span class="icon">💼</span>
+          <span class="label">Vizitka</span>
+        </button>
+        <button class="btn btn-secondary" onclick="showSection('wishlist')">
+          <span class="icon">🎁</span>
+          <span class="label">Wishlist</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Card Section -->
+  <section id="businesscard" class="section">
+    <div class="content-container">
+      <div class="card">
+        <h2>Petr Hosek</h2>
+        <p class="role">Graphic Designer & Developer</p>
+        <p class="email"><a href="mailto:hosp02@vse.cz">hosp02@vse.cz</a></p>
+        <a href="https://www.linkedin.com/in/petr-hosek/" target="_blank" class="social-link">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wishlist Section -->
+  <section id="wishlist" class="section">
+    <div class="content-container">
+      <h2>Wishlist</h2>
+      <p class="section-subtitle">Napiš své jméno vedle položky kterou si přeješ!</p>
+      
+      <table class="wishlist-table">
+        <tr><th>Položka</th><th>Jména</th><th>Přidej své jméno</th></tr>
+        <tr>
+          <td>Lamborghini</td>
+          <td><div class="names" id="names-1"></div></td>
+          <td><form class="claim-form" data-item-id="1" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Kůň</td>
+          <td><div class="names" id="names-2"></div></td>
+          <td><form class="claim-form" data-item-id="2" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Dům v Venezuele</td>
+          <td><div class="names" id="names-3"></div></td>
+          <td><form class="claim-form" data-item-id="3" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Soukromý ostrov</td>
+          <td><div class="names" id="names-4"></div></td>
+          <td><form class="claim-form" data-item-id="4" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Světová cesta</td>
+          <td><div class="names" id="names-5"></div></td>
+          <td><form class="claim-form" data-item-id="5" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Sbírka umění</td>
+          <td><div class="names" id="names-6"></div></td>
+          <td><form class="claim-form" data-item-id="6" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Vlastní studio</td>
+          <td><div class="names" id="names-7"></div></td>
+          <td><form class="claim-form" data-item-id="7" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>MacBook Pro</td>
+          <td><div class="names" id="names-8"></div></td>
+          <td><form class="claim-form" data-item-id="8" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+      </table>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
