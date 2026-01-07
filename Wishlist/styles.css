@@ -5,3 +5,21 @@
 .lead{color:#2b4a66;margin:0 0 1rem}
 .btn{display:inline-block;background:#0b66ff;color:#fff;padding:.6rem 1rem;border-radius:8px;text-decoration:none}
 .site-footer{padding:2rem 0;text-align:center;color:#6b7b8c;font-size:.9rem}
+
+/* Wishlist specific styles */
+.wishlist{margin-top:2rem}
+.wishlist .wish{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.75rem 1rem;border-radius:10px;background:rgba(11,102,255,0.04);margin-bottom:0.75rem;border:1px solid rgba(11,102,255,0.06)}
+.wishlist .wish-left{flex:1;min-width:0}
+.wishlist h4{margin:0;font-size:1.05rem}
+.wishlist .claims{display:flex;gap:0.5rem;list-style:none;padding:0;margin:0.5rem 0 0;flex-wrap:wrap}
+.wishlist .claim-badge{background:#fff;border:1px solid rgba(11,102,255,0.08);padding:0.25rem 0.5rem;border-radius:999px;font-size:0.9rem;color:#0b2140}
+.wishlist .muted{color:#7b8a9c;font-style:italic}
+.claim-form{display:flex;gap:0.5rem;align-items:center;margin:0}
+.claim-form input[name="name"]{padding:0.5rem 0.75rem;border:1px solid rgba(11,102,255,0.12);border-radius:8px;min-width:160px}
+.btn.small{padding:0.4rem 0.6rem;font-size:0.9rem;border-radius:8px}
+
+@media (max-width:640px){
+  .wishlist .wish{flex-direction:column;align-items:stretch}
+  .claim-form{margin-top:0.5rem}
+  .claim-form input[name="name"]{width:100%;min-width:0}
+}

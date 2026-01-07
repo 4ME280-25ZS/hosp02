@@ -28,13 +28,15 @@ async function loadWishlist(){
   });
 
   const out = items.map(item => {
-    const itemClaims = (claimMap[item.id] || []).map(c => `<li><strong>${escapeHtml(c.name)}</strong> <small>(${new Date(c.created_at).toLocaleString()})</small></li>`).join('');
+    const itemClaims = (claimMap[item.id] || []).map(c => `<li class="claim-badge">${escapeHtml(c.name)}</li>`).join('');
     return `
       <article class="wish">
-        <h4>${escapeHtml(item.name)}</h4>
-        <ul class="claims">${itemClaims || '<li class="muted">No names yet</li>'}</ul>
+        <div class="wish-left">
+          <h4>${escapeHtml(item.name)}</h4>
+          <ul class="claims">${itemClaims || '<li class="muted">No names yet</li>'}</ul>
+        </div>
         <form onsubmit="return submitClaim(event, ${item.id})" class="claim-form">
-          <input name="name" placeholder="Your name" required />
+          <input name="name" placeholder="Write your name" required />
           <button type="submit" class="btn small">Add</button>
         </form>
       </article>
