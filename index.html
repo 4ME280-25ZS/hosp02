@@ -7,23 +7,100 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <div class="container">
-      <h1>Petr Hosek</h1>
-      <p class="subtitle">Vyberi si projekt</p>
-      
-      <div class="buttons">
-        <a href="/hosp02/businesscard/" class="btn btn-primary">
-          <span class="icon">💼</span>
-          <span class="label">Vizitka</span>
-        </a>
-        
-        <a href="/hosp02/wishlist/" class="btn btn-secondary">
-          <span class="icon">🎁</span>
-          <span class="label">Wishlist</span>
-        </a>
+  <!-- Rozcestník -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h2 class="nav-title">Petr Hosek</h2>
+      <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showSection('landing')">Domů</button>
+        <button class="nav-btn" onclick="showSection('businesscard')">Vizitka</button>
+        <button class="nav-btn" onclick="showSection('wishlist')">Wishlist</button>
       </div>
     </div>
-  </main>
+  </nav>
+
+  <!-- Landing Page -->
+  <section id="landing" class="section active">
+    <div class="hero-container">
+      <h1>Petr Hosek</h1>
+      <p class="subtitle">Vyberi si projekt</p>
+      <div class="buttons">
+        <button class="btn btn-primary" onclick="showSection('businesscard')">
+          <span class="icon">💼</span>
+          <span class="label">Vizitka</span>
+        </button>
+        <button class="btn btn-secondary" onclick="showSection('wishlist')">
+          <span class="icon">🎁</span>
+          <span class="label">Wishlist</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Card Section -->
+  <section id="businesscard" class="section">
+    <div class="content-container">
+      <div class="card">
+        <h2>Petr Hosek</h2>
+        <p class="role">Graphic Designer & Developer</p>
+        <p class="email"><a href="mailto:hosp02@vse.cz">hosp02@vse.cz</a></p>
+        <a href="https://www.linkedin.com/in/petr-hosek/" target="_blank" class="social-link">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wishlist Section -->
+  <section id="wishlist" class="section">
+    <div class="content-container">
+      <h2>Wishlist</h2>
+      <p class="section-subtitle">Napiš své jméno vedle položky kterou si přeješ!</p>
+      
+      <table class="wishlist-table">
+        <tr><th>Položka</th><th>Jména</th><th>Přidej své jméno</th></tr>
+        <tr>
+          <td>Lamborghini</td>
+          <td><div class="names" id="names-1"></div></td>
+          <td><form class="claim-form" data-item-id="1" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Kůň</td>
+          <td><div class="names" id="names-2"></div></td>
+          <td><form class="claim-form" data-item-id="2" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Dům v Venezuele</td>
+          <td><div class="names" id="names-3"></div></td>
+          <td><form class="claim-form" data-item-id="3" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Soukromý ostrov</td>
+          <td><div class="names" id="names-4"></div></td>
+          <td><form class="claim-form" data-item-id="4" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Světová cesta</td>
+          <td><div class="names" id="names-5"></div></td>
+          <td><form class="claim-form" data-item-id="5" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Sbírka umění</td>
+          <td><div class="names" id="names-6"></div></td>
+          <td><form class="claim-form" data-item-id="6" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>Vlastní studio</td>
+          <td><div class="names" id="names-7"></div></td>
+          <td><form class="claim-form" data-item-id="7" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+        <tr>
+          <td>MacBook Pro</td>
+          <td><div class="names" id="names-8"></div></td>
+          <td><form class="claim-form" data-item-id="8" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
