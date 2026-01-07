@@ -147,18 +147,18 @@ function escapeHtml(str) {
 
 // Initialize on page load
 window.addEventListener('DOMContentLoaded', async () => {
-  // Try to load from Supabase first
-  const supabaseClaims = await loadFromSupabase();
-  if (supabaseClaims) {
-    // If Supabase has data, use it and update localStorage
-    saveLocalClaims(supabaseClaims);
-  }
-  
-  // Render with whatever data we have
+  // Render immediately with localStorage (fast, no loading screen)
   renderWishlist();
   
-  // Poll Supabase every 10s for updates
+  // Load from Supabase in background (non-blocking)
   if (supabase) {
+    const supabaseClaims = await loadFromSupabase();
+    if (supabaseClaims) {
+      saveLocalClaims(supabaseClaims);
+      renderWishlist();
+    }
+    
+    // Poll Supabase every 10s for updates
     setInterval(async () => {
       const latest = await loadFromSupabase();
       if (latest) {
