@@ -1,6 +1,6 @@
-*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;color:#111;background:#fff}a{color:inherit}img{max-width:100%;height:auto}
+*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;color:#111;background:linear-gradient(180deg,#eaf6ff 0%,#f6fbff 50%,#ffffff 100%)}a{color:inherit}img{max-width:100%;height:auto}
 .container{max-width:1100px;margin:0 auto;padding:1rem}
-.site-header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}
+.site-header{background:transparent;border-bottom:0;position:sticky;top:0;z-index:20} 
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0}
 .brand{font-weight:700;font-size:1.1rem;text-decoration:none}
 .site-nav{display:flex;gap:1rem}
@@ -10,8 +10,8 @@
 /* Design variables */
 :root{--bg-a:#4facfe;--bg-b:#00f2fe;--bg-c:#8fc9ff;--accent:#0b66ff;--card-bg:rgba(255,255,255,0.72)}
 
-.animated-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-.animated-bg::before,.animated-bg::after{content:"";position:absolute;border-radius:50%;filter:blur(64px);opacity:0.55;will-change:transform}
+.animated-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.animated-bg::before,.animated-bg::after{content:"";position:absolute;border-radius:50%;filter:blur(44px);opacity:0.68;will-change:transform} 
 .animated-bg::before{width:90vmax;height:80vmax;left:-10%;top:-30%;background:radial-gradient(circle at 40% 35%, rgba(255,255,255,0.36) 0%, rgba(79,172,254,0.14) 18%, transparent 55%), radial-gradient(circle at 70% 70%, var(--bg-b) 0%, transparent 40%);animation:spot 18s ease-in-out infinite}
 .animated-bg::after{width:60vmax;height:50vmax;right:-20%;bottom:-20%;background:radial-gradient(circle at 30% 30%,var(--bg-c) 0%,transparent 40%);animation:float 28s ease-in-out infinite reverse}
 @keyframes spot{0%{transform:translate(0,0) scale(1)}50%{transform:translate(5%, -4%) scale(1.02)}100%{transform:translate(0,0) scale(1)}}
