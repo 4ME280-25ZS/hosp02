@@ -4,103 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Petr Hosek — Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #2196f3 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 3rem 2rem;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .subtitle { font-size: 1.1rem; margin-bottom: 2.5rem; opacity: 0.9; }
+    .buttons { display: flex; flex-direction: column; gap: 1rem; }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+      padding: 1rem 2rem; border-radius: 12px; text-decoration: none;
+      font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); }
+    .btn-secondary {
+      background: linear-gradient(135deg, #2196f3, #1976d2);
+      color: #fff; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+    }
+    .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(33, 150, 243, 0.6); }
+    .icon { font-size: 1.4rem; }
+  </style>
 </head>
 <body>
-  <!-- Rozcestník -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <h2 class="nav-title">Petr Hosek</h2>
-      <div class="nav-buttons">
-        <button class="nav-btn active" onclick="showSection('landing')">Domů</button>
-        <button class="nav-btn" onclick="showSection('businesscard')">Vizitka</button>
-        <button class="nav-btn" onclick="showSection('wishlist')">Wishlist</button>
-      </div>
+  <div class="container">
+    <h1>Petr Hosek</h1>
+    <p class="subtitle">Vyberte projekt</p>
+    <div class="buttons">
+      <a href="businesscard/" class="btn btn-primary">
+        <span class="icon">💼</span> Vizitka
+      </a>
+      <a href="wishlist/" class="btn btn-secondary">
+        <span class="icon">🎁</span> Wishlist
+      </a>
     </div>
-  </nav>
-
-  <!-- Landing Page -->
-  <section id="landing" class="section active">
-    <div class="hero-container">
-      <h1>Petr Hosek</h1>
-      <p class="subtitle">Vyberi si projekt</p>
-      <div class="buttons">
-        <button class="btn btn-primary" onclick="showSection('businesscard')">
-          <span class="icon">💼</span>
-          <span class="label">Vizitka</span>
-        </button>
-        <button class="btn btn-secondary" onclick="showSection('wishlist')">
-          <span class="icon">🎁</span>
-          <span class="label">Wishlist</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Business Card Section -->
-  <section id="businesscard" class="section">
-    <div class="content-container">
-      <div class="card">
-        <h2>Petr Hosek</h2>
-        <p class="role">Graphic Designer & Developer</p>
-        <p class="email"><a href="mailto:hosp02@vse.cz">hosp02@vse.cz</a></p>
-        <a href="https://www.linkedin.com/in/petr-hosek/" target="_blank" class="social-link">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Wishlist Section -->
-  <section id="wishlist" class="section">
-    <div class="content-container">
-      <h2>Wishlist</h2>
-      <p class="section-subtitle">Napiš své jméno vedle položky kterou si přeješ!</p>
-      
-      <table class="wishlist-table">
-        <tr><th>Položka</th><th>Jména</th><th>Přidej své jméno</th></tr>
-        <tr>
-          <td>Lamborghini</td>
-          <td><div class="names" id="names-1"></div></td>
-          <td><form class="claim-form" data-item-id="1" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-        <tr>
-          <td>Kůň</td>
-          <td><div class="names" id="names-2"></div></td>
-          <td><form class="claim-form" data-item-id="2" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-        <tr>
-          <td>Dům v Venezuele</td>
-          <td><div class="names" id="names-3"></div></td>
-          <td><form class="claim-form" data-item-id="3" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-        <tr>
-          <td>Soukromý ostrov</td>
-          <td><div class="names" id="names-4"></div></td>
-          <td><form class="claim-form" data-item-id="4" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-        <tr>
-          <td>Světová cesta</td>
-          <td><div class="names" id="names-5"></div></td>
-          <td><form class="claim-form" data-item-id="5" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-        <tr>
-          <td>Sbírka umění</td>
-          <td><div class="names" id="names-6"></div></td>
-          <td><form class="claim-form" data-item-id="6" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-        <tr>
-          <td>Vlastní studio</td>
-          <td><div class="names" id="names-7"></div></td>
-          <td><form class="claim-form" data-item-id="7" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-        <tr>
-          <td>MacBook Pro</td>
-          <td><div class="names" id="names-8"></div></td>
-          <td><form class="claim-form" data-item-id="8" onsubmit="return handleSubmit(event);"><input type="text" name="name" placeholder="Tvoje jméno" maxlength="32" /><button type="submit">Přidat</button></form></td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
+  </div>
 </body>
 </html>
