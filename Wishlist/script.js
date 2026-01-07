@@ -3,7 +3,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 /* SUPABASE CONFIG - set these values before using the app */
 const SUPABASE_URL = 'https://ryugpbxgznrrbomuluuv.supabase.co'
-const SUPABASE_ANON_KEY = 'sb_publishable_pIs94dA8947A7xUqsmfrHA_GArj-8oO' // public anon key (safe to include)
+const SUPABASE_ANON_KEY = 'sb_publishable_pIs94dA8947A7xUqsmfrHA_GArj-8oO'
 
 // Supabase client (loaded via CDN in index.html)
 let supabase = null;
